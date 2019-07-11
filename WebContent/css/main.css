@@ -30,7 +30,7 @@ a:hover{ color:#f00; text-decoration:underline;}
 #container{ clear:both; width:947px; height:100%; overflow:hidden; margin:14px auto 0;}
 	.sidebar{ float:left; width:157px;}
 		.sidebar h1{ clear:both;}
-		.side_list{ height:250px; background:url(../images/sidebarbg.gif) no-repeat; margin:2px 0 12px;}
+		.side_list{ height:250px; background:url(../images/sidebarbg.gif) no-repeat; margin:2px 0 4px;}
 	.main{ float:right; width:787px;}
 		.class_type{ background:url(../images/class_bg.gif) no-repeat right 8px; height:40px; padding:0 0 0 14px;}
 		.content{ float:left; width:500px; border-right:1px solid #eff0f4; margin:16px 0 0 10px;}
