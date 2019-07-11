@@ -29,4 +29,24 @@
     <servlet-name>loginServlet</servlet-name>
     <url-pattern>/loginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>registerService</display-name>
+    <servlet-name>registerService</servlet-name>
+    <servlet-class>service.login.registerService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>registerService</servlet-name>
+    <url-pattern>/registerService</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>loginService</display-name>
+    <servlet-name>loginService</servlet-name>
+    <servlet-class>service.login.loginService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginService</servlet-name>
+    <url-pattern>/loginService</url-pattern>
+  </servlet-mapping>
 </web-app>

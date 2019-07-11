@@ -1,4 +1,4 @@
-package com.hbase.test.servlet.Dao;
+package service;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -6,21 +6,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.hbase.test.servlet.entities.User;
-import com.hbase.test.servlet.jdbcutil.DatabaseUtil;
+import entity.User;
+import util.DatabaseUtil;
 
 public class UserServiceImpl implements UserService {
 	@Override
+	//检查用户是否存在
 	public boolean checkUserNameIsExit(String userName) throws SQLException {
 		Connection conn = null;
 		int count = 0;
 		try {
 			conn = DatabaseUtil.getConnection();
 			User user = null;
+			
+			//编写SQL语句
 			String sql = "SELECT * FROM usertable WHERE userName = ?";
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, userName);
+			
+			//执行查询
 			ResultSet rs = ptmt.executeQuery();
+			
+			//统计用户数量
 			while (rs.next()) {
 				count++;
 			}
@@ -38,16 +45,17 @@ public class UserServiceImpl implements UserService {
 	
 
 	@Override
+	//用户注册
 	public void addUser(User user) throws SQLException {
 		Connection conn=null;
 		try {
-		//获取连接
+		//连接数据库
         conn = DatabaseUtil.getConnection();
-        //sql
+        
+        //编写sql语句
         String sql = "INSERT INTO usertable (userName, userSex, userPassword, userEmail, userBirthday,userFlag)"
                 +" values("+"?,?,?,?,?,?)";
-        //预编译
-        PreparedStatement ptmt = conn.prepareStatement(sql); //预编译SQL，减少sql执行
+        PreparedStatement ptmt = conn.prepareStatement(sql); 
         ptmt.setString(1, user.getUserName());
         ptmt.setString(2, user.getUserSex());
         ptmt.setString(3, user.getUserPassword());
@@ -56,7 +64,8 @@ public class UserServiceImpl implements UserService {
         ptmt.setDate(5, new java.sql.Date(user.getUserBirthday().getTime()));
         //new java.sql.Date(user.getBirth().getTime())
         ptmt.setInt(6, user.getUserFlag());
-        //执行
+        
+        //执行SQL语句
         ptmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,16 +75,20 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	//查询成功，则返回user信息，返回null则代表没有该用户
+	//查询用户
 	@Override
 	public User getUserByUserName(String userName) throws SQLException {
 		Connection conn = null;
 		User user = null;
 		try {
 			conn = DatabaseUtil.getConnection();
+			
+			//编写SQL语句
 			String sql = "SELECT * FROM usertable WHERE userName = ?";
 			PreparedStatement ptmt = conn.prepareStatement(sql);
 			ptmt.setString(1, userName);
+			
+			//执行查询
 			ResultSet rs = ptmt.executeQuery();
 			while (rs.next()) {
 				user=new User();
@@ -92,6 +105,7 @@ public class UserServiceImpl implements UserService {
 		} finally {
 			DatabaseUtil.closeAll(conn, null, null);
 		}
+		//返回查询的用户
 		return user;
 
 	}

@@ -1,4 +1,4 @@
-package com.hbase.test.servlet.jdbcutil;
+package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,14 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * 数据库连接与关闭工具类。
+ * 鏁版嵁搴撹繛鎺ヤ笌鍏抽棴宸ュ叿绫汇��
  */
 public class DatabaseUtil {
 	
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
     private static final String DB_URL = "jdbc:mysql://localhost:3306/newsdatabase";
     private static final String USER = "root";
-    private static final String PASS = "123456";
+    private static final String PASS = "zbs980716";
     
     static {
         try {
@@ -25,11 +25,11 @@ public class DatabaseUtil {
     }
 
     /**
-     * 获取数据库连接对象。
+     * 鑾峰彇鏁版嵁搴撹繛鎺ュ璞°��
      * @throws SQLException 
      */
     public static Connection getConnection() throws SQLException {
-        // 获取连接并捕获异常
+        // 鑾峰彇杩炴帴骞舵崟鑾峰紓甯�
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -37,35 +37,35 @@ public class DatabaseUtil {
             e.printStackTrace();
             throw e;
         }
-        return conn;// 返回连接对象
+        return conn;// 杩斿洖杩炴帴瀵硅薄
     }
 
     /**
-     * 关闭数据库连接。
+     * 鍏抽棴鏁版嵁搴撹繛鎺ャ��
      * 
      * @param conn
-     *            数据库连接
+     *            鏁版嵁搴撹繛鎺�
      * @param stmt
-     *            Statement对象
+     *            Statement瀵硅薄
      * @param rs
-     *            结果集
+     *            缁撴灉闆�
      */
     public static void closeAll(Connection conn, Statement stmt, ResultSet rs) {
-        // 若结果集对象不为空，则关闭
+        // 鑻ョ粨鏋滈泦瀵硅薄涓嶄负绌猴紝鍒欏叧闂�
         try {
             if (rs != null && !rs.isClosed())
                 rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // 若Statement对象不为空，则关闭
+        // 鑻tatement瀵硅薄涓嶄负绌猴紝鍒欏叧闂�
         try {
             if (stmt != null && !stmt.isClosed())
                 stmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // 若数据库连接对象不为空，则关闭
+        // 鑻ユ暟鎹簱杩炴帴瀵硅薄涓嶄负绌猴紝鍒欏叧闂�
         try {
             if (conn != null && !conn.isClosed())
                 conn.close();

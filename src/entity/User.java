@@ -1,13 +1,21 @@
-package com.hbase.test.servlet.entities;
+package entity;
 import java.io.Serializable;
 import java.util.Date;
 
 /*
  * 用户 实体类
+ * 
+ * username：用户名
+ * usersex：性别
+ * userPassword：用户密码
+ * useremail：电子邮件
+ * userbirthday：出生日期
+ * userflag：管理员标识
+ * 
  */
 public class User implements Serializable {
     private static final long serialVersionUID = 435894070589975762L;
-    private String userName;
+    private String userName; 
     private String userSex;
     private String userPassword;
     private String userEmail;
