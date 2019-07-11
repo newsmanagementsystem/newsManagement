@@ -16,6 +16,7 @@
         	<label>登录名</label><input type="text" name="username" value="" class="login_input" />
             <label>密&#160;&#160;码</label><input type="password" name="upwd" value="" class="login_input" />
             <input type="submit" class="login_sub" value="登录" onclick="return indexCheck();" />
+	      <button  class="login_sub">注册</button>
         </form>
     <img src="images/friend_logo.gif" alt="Google" id="friend_logo" /> 
   </div>
