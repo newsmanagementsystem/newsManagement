@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>新闻中国</title>
 <link href="css/main.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 <div id="header">
@@ -16,10 +17,13 @@
         	<label>登录名</label><input type="text" name="username" value="" class="login_input" />
             <label>密&#160;&#160;码</label><input type="password" name="upwd" value="" class="login_input" />
             <input type="submit" class="login_sub" value="登录" onclick="return indexCheck();" />
-	      <button  class="login_sub">注册</button>
         </form>
-    <img src="images/friend_logo.gif" alt="Google" id="friend_logo" /> 
   </div>
+  <div id="register" class="register">
+  	<input type="button" class="login_sub" value="注册" onclick="location.href='regist.jsp'" />
+  	<img src="images/friend_logo.gif" alt="Google" id="friend_logo" /> 
+  </div>
+  
   <div id="nav">
     <div id="logo"> <img src="images/logo.jpg" alt="新闻中国" /> </div>
     <div id="a_b01"> <img src="images/a_b01.gif" alt="" /> </div>
