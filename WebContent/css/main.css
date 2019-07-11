@@ -10,11 +10,12 @@ a{ color:#335884; text-decoration:none;}
 a:hover{ color:#f00; text-decoration:underline;}
 
 #header{ clear:both; position:relative; margin:0 auto; margin-top:15px; width:947px; height:116px; border:1px solid #dfdfdf; background:url(../images/topbg.gif) repeat-x;}
-	#top_login{ padding:6px 0 0 10px;}
-		.login_input{ height:19px; line-height:19px; width:118px; border:none; background:url(../images/login_input.gif) no-repeat; margin:0 14px 0 6px;}
-		.login_sub{ width:51px; height:19px; border:none; background:url(../images/login_sub.gif) no-repeat;}
-		.login_link{ text-decoration:underline; margin:0 6px;}
-		#friend_logo{ position:absolute; top:6px; right:6px;}
+	#top_login{float:left; padding:6px 0 0 10px; display: block;}
+		.login_input{ display: inline-block; height:19px; line-height:19px; width:118px; border:none; background:url(../images/login_input.gif) no-repeat; margin:0 14px 0 6px;}
+		.login_sub{display: inline-block;  width:51px; height:19px; border:none; background:url(../images/login_sub.gif) no-repeat;}
+		.login_link{ display: inline-block;text-decoration:underline; margin:0 6px;}
+		#friend_logo{ display: inline-block; position:absolute; top:6px; right:6px;}
+	#register{float:left; padding:6px 0 0 10px; display: block;}
 		
 	#nav{ clear:both;}
 		#logo{ float:left; width:145px; margin:8px 0 0 12px;}
