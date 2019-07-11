@@ -11,29 +11,9 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>registerServlet</display-name>
-    <servlet-name>registerServlet</servlet-name>
-    <servlet-class>register.registerServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>registerServlet</servlet-name>
-    <url-pattern>/registerServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>loginServlet</display-name>
-    <servlet-name>loginServlet</servlet-name>
-    <servlet-class>login.loginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>loginServlet</servlet-name>
-    <url-pattern>/loginServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>registerService</display-name>
     <servlet-name>registerService</servlet-name>
-    <servlet-class>service.login.registerService</servlet-class>
+    <servlet-class>service.register.registerService</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>registerService</servlet-name>

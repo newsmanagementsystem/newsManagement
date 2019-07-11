@@ -12,7 +12,7 @@
 <body>
 <div id="header">
   <div id="top_login">
-      <form id="login" method="post" action="<%=path %>/loginServlet">
+      <form id="login" method="post" action="<%=path %>/loginService">
         	<label>登录名</label><input type="text" name="username" value="" class="login_input" />
             <label>密&#160;&#160;码</label><input type="password" name="upwd" value="" class="login_input" />
             <input type="submit" class="login_sub" value="登录" onclick="return indexCheck();" />

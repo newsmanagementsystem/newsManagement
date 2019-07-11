@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * 鏁版嵁搴撹繛鎺ヤ笌鍏抽棴宸ュ叿绫汇��
+ * 用于封装数据库连接
  */
 public class DatabaseUtil {
 	
@@ -25,11 +25,10 @@ public class DatabaseUtil {
     }
 
     /**
-     * 鑾峰彇鏁版嵁搴撹繛鎺ュ璞°��
+     * 创建数据库连接
      * @throws SQLException 
      */
     public static Connection getConnection() throws SQLException {
-        // 鑾峰彇杩炴帴骞舵崟鑾峰紓甯�
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -37,35 +36,35 @@ public class DatabaseUtil {
             e.printStackTrace();
             throw e;
         }
-        return conn;// 杩斿洖杩炴帴瀵硅薄
+        return conn;// 返回数据库连接
     }
 
     /**
-     * 鍏抽棴鏁版嵁搴撹繛鎺ャ��
+     * 关闭数据库连接相关对象
      * 
      * @param conn
-     *            鏁版嵁搴撹繛鎺�
+     *            数据库连接
      * @param stmt
-     *            Statement瀵硅薄
+     *            Statement对象
      * @param rs
-     *            缁撴灉闆�
+     *            查询结果集
      */
     public static void closeAll(Connection conn, Statement stmt, ResultSet rs) {
-        // 鑻ョ粨鏋滈泦瀵硅薄涓嶄负绌猴紝鍒欏叧闂�
+        // 关闭查询结果集
         try {
             if (rs != null && !rs.isClosed())
                 rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // 鑻tatement瀵硅薄涓嶄负绌猴紝鍒欏叧闂�
+        // 关闭Statement
         try {
             if (stmt != null && !stmt.isClosed())
                 stmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // 鑻ユ暟鎹簱杩炴帴瀵硅薄涓嶄负绌猴紝鍒欏叧闂�
+        // 关闭数据库连接
         try {
             if (conn != null && !conn.isClosed())
                 conn.close();

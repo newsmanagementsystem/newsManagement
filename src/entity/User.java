@@ -57,5 +57,13 @@ public class User implements Serializable {
 	public void setUserFlag(Integer userFlag) {
 		this.userFlag = userFlag;
 	}
-	
+	public User() {
+	}
+	public User(String userName, String userSex, String userPassword, String userEmail,Date userBirthday) {
+		this.userName = userName;
+		this.userSex = userSex;
+		this.userPassword = userPassword;
+		this.userEmail = userEmail;
+		this.userBirthday = userBirthday;
+	}
 }

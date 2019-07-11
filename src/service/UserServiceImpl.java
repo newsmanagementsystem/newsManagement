@@ -1,7 +1,6 @@
 package service;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,8 +52,8 @@ public class UserServiceImpl implements UserService {
         conn = DatabaseUtil.getConnection();
         
         //编写sql语句
-        String sql = "INSERT INTO usertable (userName, userSex, userPassword, userEmail, userBirthday,userFlag)"
-                +" values("+"?,?,?,?,?,?)";
+        String sql = "INSERT INTO usertable (userName, userSex, userPassword, userEmail, userBirthday)"
+                +" values("+"?,?,?,?,?)";
         PreparedStatement ptmt = conn.prepareStatement(sql); 
         ptmt.setString(1, user.getUserName());
         ptmt.setString(2, user.getUserSex());
@@ -63,7 +62,7 @@ public class UserServiceImpl implements UserService {
         //java.util.Date cannot be cast to java.sql.Date
         ptmt.setDate(5, new java.sql.Date(user.getUserBirthday().getTime()));
         //new java.sql.Date(user.getBirth().getTime())
-        ptmt.setInt(6, user.getUserFlag());
+//        ptmt.setInt(6, user.getUserFlag());
         
         //执行SQL语句
         ptmt.execute();
@@ -93,7 +92,12 @@ public class UserServiceImpl implements UserService {
 			while (rs.next()) {
 				user=new User();
 				user.setUserName(rs.getString("userName"));
-				user.setUserSex(rs.getString("userSex"));
+				if(rs.getString("userSex").equals("M")) {
+					user.setUserSex(rs.getString("男"));
+				}
+				else {
+					user.setUserSex(rs.getString("女"));
+				}
 				user.setUserEmail(rs.getString("userEmail"));
 				user.setUserPassword(rs.getString("userPassword"));
 				user.setUserBirthday(rs.getDate("userBirthday"));
