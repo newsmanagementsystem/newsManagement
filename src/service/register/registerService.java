@@ -56,12 +56,12 @@ public class registerService extends HttpServlet {
             userNameIsExit = userService.checkUserNameIsExit("userName");
             if (userNameIsExit) {
                 
-                req.setAttribute("succ", "success");
-                System.out.println("添加成功！");
-            } else {
-            	userService.addUser(user);
                 req.setAttribute("succ", "error");
                 System.out.println("用户名已存在！");
+            } else {
+            	userService.addUser(user);
+                req.setAttribute("succ", "success");
+                System.out.println("添加成功！");
             }
         } catch (ParseException e) {
             e.printStackTrace();

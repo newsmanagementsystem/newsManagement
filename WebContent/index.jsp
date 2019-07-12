@@ -20,7 +20,7 @@
         </form>
   </div>
   <div id="register" class="register">
-  	<input type="button" class="login_sub" value="注册" onclick="location.href='regist.jsp'" />
+  	<input type="button" class="login_sub" value="注册" onclick="location.href='regis.jsp'" />
   	<img src="images/friend_logo.gif" alt="Google" id="friend_logo" /> 
   </div>
   

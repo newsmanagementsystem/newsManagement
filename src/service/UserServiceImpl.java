@@ -92,12 +92,7 @@ public class UserServiceImpl implements UserService {
 			while (rs.next()) {
 				user=new User();
 				user.setUserName(rs.getString("userName"));
-				if(rs.getString("userSex").equals("M")) {
-					user.setUserSex(rs.getString("男"));
-				}
-				else {
-					user.setUserSex(rs.getString("女"));
-				}
+				user.setUserSex(rs.getString("userSex"));
 				user.setUserEmail(rs.getString("userEmail"));
 				user.setUserPassword(rs.getString("userPassword"));
 				user.setUserBirthday(rs.getDate("userBirthday"));
