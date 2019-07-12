@@ -27,6 +27,7 @@
       </ul>
     </div>
   </div>
-<%--
-	request.removeAttribute("news_in_topic");
---%>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script>
+    $ajax
+</script>
