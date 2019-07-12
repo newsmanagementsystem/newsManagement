@@ -14,32 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import entity.User;
 import service.UserService;
 import service.UserServiceImpl;
-
-/**
- * Servlet implementation class registerService
- */
 public class registerService extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public registerService() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	}
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
         String userName = req.getParameter("userName");
@@ -70,5 +48,6 @@ public class registerService extends HttpServlet {
         }
         resp.sendRedirect("regis.jsp");
 	}
+
 
 }

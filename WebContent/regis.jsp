@@ -18,32 +18,56 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <script>
         function check(){
             var userName = $("#userName").val();
-            var passWord = $("#passWord").val();
             var regex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{4,16}$";
             if(userName.match(regex)==null){
-                alert("只能输入字母或数字，4-16个字符");
-            }if(passWord.length<6||passWord.length>12){
-                alert("密码超出6-12位");
+                $("#name").html("<font color='red'>用户名不符合规范</font>");
+            }else {
+                $("#name").html("<font color='green'>用户名符合规范</font>");
             }
         }
     </script>
-    <%
-        String error = (String) request.getAttribute("succ");
-        if(error!=null){
-            if (error.equals("success")){
-                System.out.print("增加成功");
-            }else if(error.equals("error")){
-                System.out.println("添加失败");
+    <script>
+        function pwdlength() {
+            var pwd1 = $("#pwd1").val();
+            var pwd2 = $("#pwd2").val();
+            if(pwd1.length<6||pwd1.length>12){
+                $("#pwd").html("<font color='green'>密码长度小于6或大于12</font>");
+            }else {
+                $("#pwd").html("<font color='green'>密码长度符合规范</font>");
             }
         }
-    %>
+        function validate() {
+            var pwd1 = $("#pwd1").val();
+            var pwd2 = $("#pwd2").val();
+            <!-- 对比两次输入的密码 -->
+            if(pwd1 == pwd2) {
+                $("#tishi").html("<font color='green'>两次密码相同</font>");
+                $("#submit").disabled = false;
+            }
+            else {
+                $("#tishi").html("<font color='red'>两次密码不相同</font>");
+                $("#submit").disabled = true;
+            }
+        }
+    </script>
+
 </head>
 
 <body>
+<%
+    String error = (String) request.getAttribute("succ");
+    if(error!=null){
+        if (error.equals("success")){
+            System.out.print("增加成功");
+        }else if(error.equals("error")){
+            System.out.println("添加失败");
+        }
+    }
+%>
 <form action="<%= path %>/registerService" method="post">
     <table border="0" cellpadding="0" cellspacing="0" align="center" width="530">
         <tr>
@@ -51,15 +75,15 @@
         </tr>
         <tr>
             <td width="107" height="36">用户名：</td>
-            <td width="524"><input name="userName" type="text" maxlength="16" id="userName">只能输入字母或数字，4-16个字符</td>
+            <td width="524"><input name="userName" placeholder="用户名" type="text" maxlength="16" id="userName" onblur="check()"><span id="name">只能输入字母或数字，4-16个字符</span></td>
         </tr>
         <tr>
             <td width="107" height="36">密码：</td>
-            <td width="524"><input name="passWord" type="password" id="passWord">密码长度6-12位</td>
+            <td width="524"><input name="passWord" type="password" placeholder="密码" id="pwd1" onblur="pwdlength()"><span id="pwd"></span></td>
         </tr>
         <tr>
             <td width="107" height="36">确认密码：</td>
-            <td width="524"><input name="passWord" type="password" class="passWord1"></td>
+            <td width="524"><input name="passWord" type="password" placeholder="请重新输入密码" id="pwd2" onblur="validate()"><span id="tishi"></span></td>
         </tr>
         <tr>
             <td width="107" height="36">性别：</td>
@@ -69,8 +93,8 @@
             </td>
         </tr>
         <tr>
-            <td width="117" height="36">电子邮件地址：</td>
-            <td width="524"><input name="email" type="email">
+            <td width="117" height="36" >电子邮件地址：</td>
+            <td width="524"><input name="email" type="email" placeholder="Email">
                 输入正确的Email地址</td>
         </tr>
         <tr>
@@ -80,7 +104,7 @@
             </td>
         </tr>
         <tr><td colspan="2" align="center">
-            <input type="submit" value="同意以下协议条款并提交" onclick="check()">
+            <input type="submit" value="同意以下协议条款并提交">
         </td></tr>
         <tr><td colspan="2">
   <textarea cols="" rows="" readonly="readonly" style="width:480px;height:110px;font-size:12px;color:#666">
