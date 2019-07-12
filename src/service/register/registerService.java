@@ -57,11 +57,11 @@ public class registerService extends HttpServlet {
             if (userNameIsExit) {
                 
                 req.setAttribute("succ", "error");
-                System.out.println("ÓÃ»§ÃûÒÑ´æÔÚ£¡");
+                System.out.println("ç”¨æˆ·åå·²å­˜åœ¨ï¼");
             } else {
             	userService.addUser(user);
                 req.setAttribute("succ", "success");
-                System.out.println("Ìí¼Ó³É¹¦£¡");
+                System.out.println("æ·»åŠ æˆåŠŸï¼");
             }
         } catch (ParseException e) {
             e.printStackTrace();

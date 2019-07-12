@@ -10,7 +10,7 @@ import util.DatabaseUtil;
 
 public class UserServiceImpl implements UserService {
 	@Override
-	//检查用户是否存在
+	//根据用户名检查用户是否存在
 	public boolean checkUserNameIsExit(String userName) throws SQLException {
 		Connection conn = null;
 		int count = 0;
