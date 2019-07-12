@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 			throw e;
 		} finally {
-			DatabaseUtil.closeAll(conn, null, null);
+			
 		}
 		if (count > 0)
 			return true;
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 			throw e;
 		} finally {
-			DatabaseUtil.closeAll(conn, null, null);
+			
 		}
 	}
 
@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 			throw e;
 		} finally {
-			DatabaseUtil.closeAll(conn, null, null);
+			
 		}
 		//返回查询的用户
 		return user;
