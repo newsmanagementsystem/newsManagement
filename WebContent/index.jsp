@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/index.css" />
 <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script src="js/wySilder.min.js" type="text/javascript"></script>
-<script src="js/silder.js"></script>
+<!-- <script src="js/silder.js"></script> -->
 <script src="js/login.js"></script>
 <script src="js/layui/layui.all.js"></script>
 </head>

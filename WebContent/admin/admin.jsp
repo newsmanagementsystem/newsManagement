@@ -6,10 +6,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>编辑新闻--管理后台</title>
-<link href="css/admin.css" rel="stylesheet" type="text/css" />
+	<base href="<%=basePath%>">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>编辑新闻--管理后台</title>
+	<!-- 引入样式文件 -->
+	<link href="css/admin.css" rel="stylesheet" type="text/css" />
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+	<!-- 引入脚本文件 -->
+	<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src="js/wySilder.min.js" type="text/javascript"></script>
+	<!-- <script src="js/silder.js"></script> -->
 </head>
 <%
     String login = (String) session.getAttribute("login");
@@ -20,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<div id="main">
 	   <div>
-	    <iframe src="admin/console_element/top.html" scrolling="no" frameborder="0" width="947px" height="180px"></iframe>
+	    <%@ include file="console_element/top.jsp" %>
 	  </div> 
 	  <div id="opt_list">
 	 	<iframe src="admin/console_element/left.html" scrolling="no" frameborder="0" width="130px"></iframe>
@@ -78,7 +84,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </ul>
 	  </div>
 	
-	  <iframe src="newspages/console_element/bottom.html" scrolling="no" frameborder="0" width="947px" height="190px"></iframe>
+	  <!-- 引入页脚 -->
+	  <%@ include file = "console_element/bottom.html" %>
     </div>
 </body>
 </html>

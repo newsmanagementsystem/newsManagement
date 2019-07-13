@@ -10,6 +10,7 @@
 <html>
 <head>
     <base href="<%=basePath%>">
+
     <title>用户注册</title>
 
     <meta http-equiv="pragma" content="no-cache">
@@ -17,37 +18,19 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-    <script src="/js/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <script>
-        function aj(){
-        var uid = $("#userName").val();
-            $.ajax({
-                async : true,    //表示请求是否异步处理
-                type : "post",    //请求类型
-                url : "/check",//请求的 URL地址
-                dataType : "json",//返回的数据类型
-                data:{"userName":uid},
-                success:function (result) {
-                    // alert(result)
-                    // console.log("result:"+result)
-                    console.log("result.msg:"+result.msg)
-                    if (result.msg==1){
-                        $("#name").html("<font color='green'>用户名可以使用 </font>");
-                    } else {
-                        $("#name").html("<font color='red'>用户名已存在 </font>");
-                    }
-                    var regex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{4,16}$";
-                    if(uid.match(regex)==null){
-                        $("#uname").html("<font color='red'>用户名不符合规范</font>");
-                    }else {
-                        $("#uname").html("<font color='green'>用户名符合规范</font>");
-                    }
-                },
-                error:function (error) {
-                    alert("错误")
-                }
-            });
-        };
+        function check(){
+            var userName = $("#userName").val();
+            var regex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{4,16}$";
+            if(userName.match(regex)==null){
+                $("#name").html("<font color='red'>用户名不符合规范</font>");
+            }else {
+                $("#name").html("<font color='green'>用户名符合规范</font>");
+            }
+        }
+    </script>
+    <script>
         function pwdlength() {
             var pwd1 = $("#pwd1").val();
             var pwd2 = $("#pwd2").val();
@@ -71,8 +54,20 @@
             }
         }
     </script>
+
 </head>
+
 <body>
+<%
+    String error = (String) request.getAttribute("succ");
+    if(error!=null){
+        if (error.equals("success")){
+            System.out.print("增加成功");
+        }else if(error.equals("error")){
+            System.out.println("添加失败");
+        }
+    }
+%>
 <form action="<%= path %>/registerService" method="post">
     <table border="0" cellpadding="0" cellspacing="0" align="center" width="530">
         <tr>
@@ -80,7 +75,7 @@
         </tr>
         <tr>
             <td width="107" height="36">用户名：</td>
-            <td width="524"><input name="userName" placeholder="用户名" type="text" maxlength="16" id="userName" onblur="aj()"><span id="name">只能输入字母或数字，4-16个字符</span><span id="uname"></span></td>
+            <td width="524"><input name="userName" placeholder="用户名" type="text" maxlength="16" id="userName" onblur="check()"><span id="name">只能输入字母或数字，4-16个字符</span></td>
         </tr>
         <tr>
             <td width="107" height="36">密码：</td>

@@ -42,23 +42,23 @@ public class loginService extends HttpServlet {
 		UserServiceImpl userService = new UserServiceImpl();
 		User user = new User();
         response.setContentType("text/html;charset=UTF-8");
-        //»ñÈ¡ÇëÇóÊı¾İ
+        //è·å–ç”¨æˆ·è¡¨å•å‚æ•°
         String username = request.getParameter("username").trim();
         String password = request.getParameter("password").trim();  
         boolean exist;
         try {
         	exist = userService.checkUserNameIsExit(username);
-        	//ÅĞ¶ÏÓÃ»§ÊÇ·ñ´æÔÚ
+        	//æ ¹æ®åˆ¤æ–­ç»“æœè¿›è¡Œå†³å®šæ˜¯å¦æ·»åŠ ç”¨æˆ·
             if(exist) {
-            	//²éÑ¯Êı¾İ¿âÓÃ»§
+            	//æŸ¥è¯¢ç”¨æˆ·
             	user = userService.getUserByUserName(username);
-            	//½«µÇÂ½µÄÓÃ»§ÃûÌí¼Óµ½SessionÖĞ
+            	//å°†ç”¨æˆ·åå†™å…¥åˆ°Sessionä¸­
             	request.getSession().setAttribute("login",user.getUserName());
-            	System.out.println("´æÔÚ+"+username);
+            	System.out.println("ç™»é™†æˆåŠŸ+"+username);
             }else {
-            	//ÓÃ»§²»´æÔÚ
+            	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             	user.setUserName("");
-//            	System.out.println("²»´æÔÚ+"+username);
+//            	System.out.println("ç™»é™†æˆåŠŸ+"+username);
             }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
