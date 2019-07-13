@@ -16,7 +16,9 @@ a:hover{ color:#f00; text-decoration:underline;}
 		.login_link{ display: inline-block;text-decoration:underline; margin:0 6px;}
 		#friend_logo{ display: inline-block; position:absolute; top:6px; right:6px;}
 	#register{float:left; padding:6px 0 0 10px; display: block;}
-		
+	
+	#silder{width:100%; margin:25px 25px 0 0 ;}
+	
 	#nav{ clear:both;}
 		#logo{ float:left; width:145px; margin:8px 0 0 12px;}
 		

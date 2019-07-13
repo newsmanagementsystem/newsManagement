@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import entity.User;
 import service.UserServiceImpl;
 
@@ -38,39 +40,33 @@ public class loginService extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserServiceImpl userService = new UserServiceImpl();
-		
-		User user;
-		boolean exist = false;
-        request.setCharacterEncoding("UTF-8");
-        
-        //获取请求数据,并去除空格
-        String name = request.getParameter("username").trim();
-        String pwd = request.getParameter("upwd").trim();
-        
+		User user = new User();
+        response.setContentType("text/html;charset=UTF-8");
+        //获取请求数据
+        String username = request.getParameter("username").trim();
+        String password = request.getParameter("password").trim();  
+        boolean exist;
         try {
-        	exist = userService.checkUserNameIsExit(name);
-        	
+        	exist = userService.checkUserNameIsExit(username);
         	//判断用户是否存在
             if(exist) {
             	//查询数据库用户
-            	user = userService.getUserByUserName(name);
-            	
+            	user = userService.getUserByUserName(username);
             	//将登陆的用户名添加到Session中
             	request.getSession().setAttribute("login",user.getUserName());
-            	
-            	//判断用户是否是管理员还是普通用户
-            	if(user.getUserFlag()==1 && user.getUserPassword().equals(pwd)) {
-            		response.sendRedirect(request.getContextPath()+"/admin/admin.jsp");
-            	}else {
-            		response.sendRedirect(request.getContextPath()+"/index.jsp");
-            	}
+            	System.out.println("存在+"+username);
             }else {
-            	response.sendRedirect(request.getContextPath()+"/index.jsp");
+            	//用户不存在
+            	user.setUserName("");
+//            	System.out.println("不存在+"+username);
             }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+//        System.out.println(""+new Gson().toJson(user));
+        response.getWriter().write(new Gson().toJson(user));
 	}
 
 }
