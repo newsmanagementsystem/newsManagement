@@ -56,9 +56,9 @@ public class loginService extends HttpServlet {
             	request.getSession().setAttribute("login",user.getUserName());
             	System.out.println("登陆成功+"+username);
             }else {
-            	//�û�������
+            	//用户不存在
             	user.setUserName("");
-//            	System.out.println("登陆成功+"+username);
+//            	System.out.println("登陆失败+"+username);
             }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
