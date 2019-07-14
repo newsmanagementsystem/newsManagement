@@ -59,7 +59,7 @@
   </div>
 </div>
 <div id="footer">
-  <%@ include file="console_element/bottom.jsp" %>
+  <%@ include file="console_element/bottom.html" %>
 </div>
 </body>
 </html>

@@ -44,4 +44,34 @@
     <servlet-name>addThemeServlet</servlet-name>
     <url-pattern>/addThemeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>listThemeServlet</display-name>
+    <servlet-name>listThemeServlet</servlet-name>
+    <servlet-class>service.theme.listThemeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listThemeServlet</servlet-name>
+    <url-pattern>/listThemeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>deleteThemeServlet</display-name>
+    <servlet-name>deleteThemeServlet</servlet-name>
+    <servlet-class>service.theme.deleteThemeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteThemeServlet</servlet-name>
+    <url-pattern>/deleteThemeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>updateThemeServlet</display-name>
+    <servlet-name>updateThemeServlet</servlet-name>
+    <servlet-class>service.theme.updateThemeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateThemeServlet</servlet-name>
+    <url-pattern>/updateThemeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

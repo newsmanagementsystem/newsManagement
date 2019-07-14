@@ -129,6 +129,6 @@
 	request.removeAttribute("news");
 	request.removeAttribute("topics");
 --%>
-<%@ include file="console_element/bottom.jsp" %>
+<%@ include file="console_element/bottom.html" %>
 </body>
 </html>

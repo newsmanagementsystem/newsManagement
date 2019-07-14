@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <iframe src="<%=path %>/admin/console_element/top.jsp" scrolling="no" frameborder="0" width="100%"></iframe>
 	  </div> 
 	  <div id="opt_list">
-	 	<iframe src="admin/console_element/left.jsp" scrolling="no" frameborder="0" width="130px"></iframe>
+	 	<iframe src="<%=path %>/admin/console_element/left.html" scrolling="no" frameborder="0" width="160px" height = "300px"></iframe>
 	  </div>
 	  <div id="opt_area"> 
 	    <ul class="classlist">
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  </div>
 	
 	  <!-- 引入页脚 -->
-	  <%@ include file = "console_element/bottom.jsp" %>
+	  <%@ include file = "console_element/bottom.html" %>
     </div>
 </body>
 </html>
