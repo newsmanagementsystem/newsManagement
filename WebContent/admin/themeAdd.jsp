@@ -23,10 +23,10 @@
 	<div id="main">
 		<!-- 引入页首 -->
 		<div>
-			<%@ include file="console_element/top.jsp"%>
+			<iframe src="<%=path %>/admin/console_element/top.jsp" scrolling="no" frameborder="0" width="100%"></iframe>
 		</div>
 		<div id="opt_list">
-			<iframe src="console_element/left.html" scrolling="no"
+			<iframe src="console_element/left.jsp" scrolling="no"
 				frameborder="0" width="130px"></iframe>
 		</div>
 		<div id="opt_area">
@@ -42,7 +42,7 @@
 			</form>
 		</div>
 		<div id="footer">
-			<%@ include file="console_element/bottom.html"%>
+			<%@ include file="console_element/bottom.jsp"%>
 		</div>
 	</div>
 

@@ -1,6 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
   <div class="sidebar">
     <h1> <img src="images/title_1.gif" alt="国内新闻" /> </h1>
     <div class="side_list">
@@ -27,7 +32,5 @@
       </ul>
     </div>
   </div>
-  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-<script>
-    $ajax
-</script>
+</body>
+</html>
