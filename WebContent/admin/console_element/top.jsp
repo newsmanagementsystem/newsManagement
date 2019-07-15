@@ -12,7 +12,7 @@
 <body>
 <div id="header">
 	<div id="welcome">
-		欢迎<%=session.getAttribute("login")%>使用新闻管理系统！
+		欢迎管理员<%=session.getAttribute("login")%>使用新闻管理系统！&nbsp;&nbsp;<a href="/newsManagement/logoutServlet">退出</a>
 	</div>
 	<div id="silder" class="js-silder">
 	<div class="silder-scroll">
@@ -27,13 +27,6 @@
 	</div>
 </div>
 </div>
-<div id="admin_bar">
-	<div id="status">
-		管理员：
-		<%=session.getAttribute("login")%>
-		&#160;&#160;&#160;&#160; <a href="#">login out</a>
-	</div>
-	<div id="channel"></div>
-</div>
+
 </body>
 </html>

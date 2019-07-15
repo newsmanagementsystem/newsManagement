@@ -1,4 +1,4 @@
-package service.register;
+package com.seven.service.register;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import entity.User;
-import service.UserService;
-import service.UserServiceImpl;
+import com.seven.entity.User;
+import com.seven.service.UserService;
+import com.seven.service.UserServiceImpl;
+
 
 public class registerService extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -74,7 +74,6 @@
     <servlet-name>updateThemeServlet</servlet-name>
     <url-pattern>/updateThemeServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>checkService</display-name>
@@ -85,7 +84,6 @@
     <servlet-name>checkService</servlet-name>
     <url-pattern>/checkService</url-pattern>
   </servlet-mapping>
-  <!---->
   <servlet>
     <description></description>
     <display-name>getNewsCountServlet</display-name>
@@ -96,5 +94,24 @@
     <servlet-name>getNewsCountServlet</servlet-name>
     <url-pattern>/getNewsCount</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>logoutServlet</display-name>
+    <servlet-name>logoutServlet</servlet-name>
+    <servlet-class>com.seven.service.login.logoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logoutServlet</servlet-name>
+    <url-pattern>/logoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>mainPageServlet</display-name>
+    <servlet-name>mainPageServlet</servlet-name>
+    <servlet-class>com.seven.service.login.mainPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mainPageServlet</servlet-name>
+    <url-pattern>/mainPageServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -10,25 +10,58 @@
     <h1> <img src="images/title_1.gif" alt="国内新闻" /> </h1>
     <div class="side_list">
       <ul>
-      	<c:forEach items="${list1}" var="news">
-            <li><a href='util/news?opr=readNew&nid=${news.nid}'><b>${news.ntitle}</b></a></li>
-      	</c:forEach>
+      	<!-- 循环输出新闻列表 -->
+      	<c:choose>
+      		<c:when test="${requestScope.chinaNewsList == null}">
+      			<p>当前暂无新闻</p>
+      		</c:when>
+      		<c:when test="${empty requestScope.chinaNewsList}">
+      			<p>当前暂无新闻</p>
+      		</c:when>
+      		<c:otherwise>
+      			<c:forEach items="${requestScope.chinaNewsList}" var="aNew">
+            		<li><a href='/readNews&newsId=${aNew.newsId}'><b>${aNew.newsTitle}</b></a></li>
+      			</c:forEach>
+      		</c:otherwise>
+      	</c:choose>
       </ul>
     </div>
     <h1> <img src="images/title_2.gif" alt="国际新闻" /> </h1>
     <div class="side_list">
       <ul>
-      	<c:forEach items="${list2}" var="news">
-            <li><a href='util/news?opr=readNew&nid=${news.nid}'><b>${news.ntitle}</b></a></li>
-        </c:forEach>
+      <!-- 循环输出新闻列表 -->
+      	<c:choose>
+      		<c:when test="${requestScope.intelNewsList == null}">
+      			<p>当前暂无新闻</p>
+      		</c:when>
+      		<c:when test="${empty requestScope.intelNewsList}">
+      			<p>当前暂无新闻</p>
+      		</c:when>
+      		<c:otherwise>
+      			<c:forEach items="${requestScope.intelNewsList}" var="aNew">
+            		<li><a href='/readNews&newsId=${aNew.newsId}'><b>${aNew.newsTitle}</b></a></li>
+      			</c:forEach>
+      		</c:otherwise>
+      	</c:choose>
       </ul>
     </div>
     <h1> <img src="images/title_3.gif" alt="娱乐新闻" /> </h1>
     <div class="side_list">
       <ul>
-      	<c:forEach items="${list3}" var="news">
-            <li><a href='util/news?opr=readNew&nid=${news.nid}'><b>${news.ntitle}</b></a></li>
-        </c:forEach>
+      <!-- 循环输出新闻列表 -->
+      	<c:choose>
+      		<c:when test="${requestScope.playNewsList == null}">
+      			<p>当前暂无新闻</p>
+      		</c:when>
+      		<c:when test="${empty requestScope.playNewsList}">
+      			<p>当前暂无新闻</p>
+      		</c:when>
+      		<c:otherwise>
+      			<c:forEach items="${requestScope.playNewsList}" var="aNew">
+            		<li><a href='/readNews&newsId=${aNew.newsId}'><b>${aNew.newsTitle}</b></a></li>
+      			</c:forEach>
+      		</c:otherwise>
+      	</c:choose>
       </ul>
     </div>
   </div>
