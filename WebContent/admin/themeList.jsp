@@ -36,11 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>${theme.themeName} &nbsp;<a
 						href='./admin/themeModify.jsp?tid=${theme.themeID}&tname=${theme.themeName}'>修改</a>
 						&nbsp; <a href=javascript:void(0); onclick="getNewsCountBythemeId('${theme.themeID}')">删除</a>
-
-						<%--href='<%= basePath %>deleteThemeServlet?tid=${theme.themeID}'>删除</a>--%>
 						<%--修改a标签调用方法逻辑，先去异步查询是否具有相关新闻，判断是否确认删除--%>
-
-						<%--a href="javascript:void(0);" onclick="js_method()"--%>
 					</li>
 				</c:forEach>
 			</ul>
