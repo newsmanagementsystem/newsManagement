@@ -13,6 +13,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 引入样式文件 -->
 <link href="./css/admin.css" rel="stylesheet" type="text/css" />
 <link href="./css/index.css" rel="stylesheet" type="text/css" />
+<!-- 引入js -->
+<script type="text/javascript" src="<%=basePath%>/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/js/layui/layui.all.js"></script>
 
 </head>
 <body>
@@ -32,8 +35,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:forEach items="${requestScope.themeList}" var="theme">
 					<li>${theme.themeName} &nbsp;<a
 						href='./admin/themeModify.jsp?tid=${theme.themeID}&tname=${theme.themeName}'>修改</a>
-						&nbsp; <a
-						href='<%= basePath %>deleteThemeServlet?tid=${theme.themeID}'>删除</a>
+						&nbsp; <a href=javascript:void(0); onclick="getNewsCountBythemeId('${theme.themeID}')">删除</a>
+
+						<%--href='<%= basePath %>deleteThemeServlet?tid=${theme.themeID}'>删除</a>--%>
+						<%--修改a标签调用方法逻辑，先去异步查询是否具有相关新闻，判断是否确认删除--%>
+
+						<%--a href="javascript:void(0);" onclick="js_method()"--%>
 					</li>
 				</c:forEach>
 			</ul>
@@ -43,4 +50,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+    function getNewsCountBythemeId(themeID){
+        //alert(themeID);
+        var themeID=themeID;
+        $.ajax({
+            type : "post",    //请求类型
+            url : "/getNewsCount",//请求的 URL地址
+            dataType : "json",//返回的数据类型
+            data:{"themeID":themeID},
+            success:function (result) {
+                var count=result.msg;
+                //alert("该主题下有"+count+"条新闻！");
+                // 没有相关新闻，直接删除
+                if(count==0){
+                    $.ajax({
+                        async : true,
+                        type: "post",
+                        url: "/deleteThemeServlet",
+                        data: {
+                            "tid": themeID
+                        }});
+                    window.location.reload();
+                }else {// count>0 具有相关新闻
+                    console.log("result.msg:"+result.msg);
+                    layer.confirm('该主题具有相关联的新闻！你确定删除吗？', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(ind){
+                        layer.close(ind);
+                        // 确认删除
+                        $.ajax({
+                            async : true,
+                            type: "post",
+                            url: "/deleteThemeServlet",
+                            data: {
+                                "tid": themeID
+                            }});
+                        window.location.reload();
+                    }, function(inds){
+                        layer.close(inds);
+                    });
+                }
+            },
+            error:function (error) {
+                alert("请求错误");
+            }
+        });
+    }
+</script>
 </html>
