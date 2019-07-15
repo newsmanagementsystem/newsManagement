@@ -231,5 +231,31 @@ public class NewsDaoImpl implements NewsDao {
         }
         return result;
 	}
+	
+	@Override
+    public int getNewsCountBythemeId(int themeId) {
+        //查找sql
+        Connection conn = null;
+        ResultSet rs = null;
+        //根据themeId查询返回的新闻数量
+        int count=0;
+        try {
+            String sql = "SELECT * FROM newstable WHERE themeId = ?";
+            //获取连接
+            conn = DatabaseUtil.getConnection();
+            PreparedStatement pmt = conn.prepareStatement(sql);
+            pmt.setInt(1, themeId);
+            //执行查询
+            rs = pmt.executeQuery();
+            //统计新闻数量
+            while (rs.next()) {
+                count++;
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 
 }
