@@ -74,14 +74,27 @@
     <servlet-name>updateThemeServlet</servlet-name>
     <url-pattern>/updateThemeServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>checkService</display-name>
     <servlet-name>checkService</servlet-name>
-    <servlet-class>service.register.checkService</servlet-class>
+    <servlet-class>com.seven.service.register.checkService</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>checkService</servlet-name>
     <url-pattern>/checkService</url-pattern>
   </servlet-mapping>
+  <!---->
+  <servlet>
+    <description></description>
+    <display-name>getNewsCountServlet</display-name>
+    <servlet-name>getNewsCountServlet</servlet-name>
+    <servlet-class>com.seven.service.news.getNewsCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getNewsCountServlet</servlet-name>
+    <url-pattern>/getNewsCount</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
