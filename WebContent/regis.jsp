@@ -11,12 +11,6 @@
 <head>
     <base href="<%=basePath%>">
     <title>用户注册</title>
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="This is my page">
-
 </head>
 <body>
 <form action="<%= path %>/registerService" method="post">
@@ -55,7 +49,7 @@
             </td>
         </tr>
         <tr><td colspan="2" align="center">
-            <input type="submit" value="同意以下协议条款并提交">
+            <a href="index.jsp"><input type="submit" value="同意以下协议条款并提交"></a>
         </td></tr>
         <tr><td colspan="2">
   <textarea cols="" rows="" readonly="readonly" style="width:480px;height:110px;font-size:12px;color:#666">
@@ -73,6 +67,7 @@
 </form>
 </body>
 <script src="/js/jquery-1.11.3.min.js"></script>
+<script src="js/layui/layui.all.js"></script>
 <script>
     function aj(){
         var uid = $("#userName").val();
@@ -85,6 +80,7 @@
             success:function (result) {
                 console.log("result.msg:"+result.msg)
                 if (result.msg==1){
+                    $("#name").html("<font color='red'>用户名可以使用 </font>");
                 } else {
                     $("#name").html("<font color='red'>用户名已存在 </font>");
                 }
@@ -96,7 +92,7 @@
                 }
             },
             error:function (error) {
-                alert("错误")
+                alert("错误1")
             }
         });
     };
@@ -122,6 +118,7 @@
             $("#submit").disabled = true;
         }
     }
+
 </script>
 </html>
 
