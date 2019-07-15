@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
 			while (rs.next()) {
 				count++;
 			}
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -66,6 +67,7 @@ public class UserServiceImpl implements UserService {
         
         //执行SQL语句
         ptmt.execute();
+	conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -98,6 +100,7 @@ public class UserServiceImpl implements UserService {
 				user.setUserBirthday(rs.getDate("userBirthday"));
 				user.setUserFlag(rs.getInt("userFlag"));
 			}
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
