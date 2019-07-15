@@ -1,4 +1,4 @@
-package service.theme;
+package com.seven.service.theme;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.Theme;
+import com.seven.entity.Theme;
 
 /**
  * Servlet implementation class updateThemeServlet

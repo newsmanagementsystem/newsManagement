@@ -1,4 +1,4 @@
-package dao;
+package com.seven.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import entity.Theme;
-import util.DatabaseUtil;
+import com.seven.entity.Theme;
+import com.seven.util.DatabaseUtil;
 
 public class themeDaoImpl implements themeDao {
     //添加主题

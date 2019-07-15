@@ -1,4 +1,4 @@
-package service.theme;
+package com.seven.service.theme;
 
 import java.io.IOException;
 import java.io.PrintWriter;

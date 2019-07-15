@@ -1,6 +1,6 @@
-package dao;
+package com.seven.dao;
 
-import entity.Theme;
+import com.seven.entity.Theme;
 
 import java.util.List;
 

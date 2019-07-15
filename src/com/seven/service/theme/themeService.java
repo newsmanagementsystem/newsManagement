@@ -1,6 +1,6 @@
-package service.theme;
-import entity.Theme;
-import java.sql.SQLException;
+package com.seven.service.theme;
+import com.seven.entity.Theme;
+
 import java.util.List;
 
 public interface themeService {

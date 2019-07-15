@@ -1,4 +1,4 @@
-package entity;
+package com.seven.entity;
 import java.io.Serializable;
 import java.util.Date;
 

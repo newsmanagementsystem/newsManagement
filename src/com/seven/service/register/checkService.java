@@ -1,8 +1,8 @@
-package service.register;
+package com.seven.service.register;
 
 import com.google.gson.Gson;
-import service.UserService;
-import service.UserServiceImpl;
+import com.seven.service.UserService;
+import com.seven.service.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

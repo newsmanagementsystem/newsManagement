@@ -1,4 +1,4 @@
-package entity;
+package com.seven.entity;
 
 public class Theme {
 	private int themeID;

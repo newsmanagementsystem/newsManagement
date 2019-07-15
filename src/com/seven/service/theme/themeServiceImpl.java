@@ -1,8 +1,8 @@
-package service.theme;
+package com.seven.service.theme;
 
-import dao.themeDao;
-import dao.themeDaoImpl;
-import entity.Theme;
+import com.seven.dao.themeDao;
+import com.seven.dao.themeDaoImpl;
+import com.seven.entity.Theme;
 
 import java.util.List;
 

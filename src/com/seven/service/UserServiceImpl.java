@@ -1,12 +1,12 @@
-package service;
+package com.seven.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import entity.User;
-import util.DatabaseUtil;
+import com.seven.entity.User;
+import com.seven.util.DatabaseUtil;
 
 public class UserServiceImpl implements UserService {
 	@Override

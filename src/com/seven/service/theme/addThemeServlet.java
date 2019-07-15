@@ -1,9 +1,7 @@
-package service.theme;
+package com.seven.service.theme;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import entity.Theme;
+import com.seven.entity.Theme;
 
 /**
  * Servlet implementation class addThemeServlet

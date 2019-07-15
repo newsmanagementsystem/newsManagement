@@ -1,9 +1,8 @@
-package service;
+package com.seven.service;
 
 import java.sql.SQLException;
-import java.util.List;
 
-import entity.User;
+import com.seven.entity.User;
 
 
 

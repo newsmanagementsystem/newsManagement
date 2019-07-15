@@ -1,4 +1,4 @@
-package service.login;
+package com.seven.service.login;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import entity.User;
-import service.UserServiceImpl;
+import com.seven.entity.User;
+import com.seven.service.UserServiceImpl;
 
 /**
  * Servlet implementation class loginService
