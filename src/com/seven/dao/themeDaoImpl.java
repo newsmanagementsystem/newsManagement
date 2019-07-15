@@ -28,8 +28,11 @@ public class themeDaoImpl implements themeDao {
 
             //ִ执行SQL语句
             pmt.execute();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+
         }
     }
 
@@ -56,7 +59,7 @@ public class themeDaoImpl implements themeDao {
             while (resultSet.next()) {
                 count++;
             }
-
+            connection.close();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -89,11 +92,10 @@ public class themeDaoImpl implements themeDao {
                 theme.setThemeName(rs.getString("themeName"));
                 list.add(theme);
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
             //throw e;
-        } finally {
-             //关闭
         }
         return list;
     }
@@ -109,6 +111,7 @@ public class themeDaoImpl implements themeDao {
             ptmt.setString(1, theme.getThemeName());
             ptmt.setInt(2, theme.getThemeID());
             result = ptmt.executeUpdate();
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -131,6 +134,7 @@ public class themeDaoImpl implements themeDao {
                 theme.setThemeID(rs.getInt("themeID"));
                 theme.setThemeName(rs.getString("themeName"));
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -138,6 +142,7 @@ public class themeDaoImpl implements themeDao {
         return theme;
     }
 
+    //删除主题，如果有级联的新闻那么返回新闻的条数
     @Override
     public int deleteTheme(int tid) {
         Connection conn = null;
@@ -148,7 +153,7 @@ public class themeDaoImpl implements themeDao {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setInt(1, tid);
             result = ptmt.executeUpdate();
-
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
