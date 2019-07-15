@@ -26,4 +26,7 @@ public interface NewsDao {
 
 	// 通过nid删除新闻
 	public int deleteNews(int nid);
+	
+	// 根据themeId查找新闻的数量
+    	public int getNewsCountBythemeId(int themeId);
 }
