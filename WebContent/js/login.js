@@ -33,15 +33,16 @@ $(document).ready(function(){
 	                	if($pass==res.userPassword){
 	                		//判断是否为管理员
 	                		if(res.userFlag==1){
-						layer.msg('管理员'+$name+'登录成功！', {
+	                			window.location.href='admin/admin.jsp';
+	                			layer.msg('管理员'+$name+'登录成功！', {
 			                        time: 2000, //2s后自动关闭
 			                    });
-	                			window.location.href='admin/admin.jsp';
 	                			return false;
 	                		}else{
-						layer.msg('普通用户'+$name+'登录成功！', {
+	                			layer.msg('普通用户'+$name+'登录成功！', {
 			                        time: 2000, //2s后自动关闭
 			                    });
+	                			location.reload();
 	                			return ;//普通用户在当前页面
 	                		}
 	                	}else{

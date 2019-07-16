@@ -54,7 +54,7 @@ public class loginService extends HttpServlet {
             	user = userService.getUserByUserName(username);
             	//将用户名写入到Session中
             	request.getSession().setAttribute("login",user.getUserName());
-            	System.out.println("登陆成功+"+username);
+            	System.out.println("存在用户+"+username);
             }else {
             	//用户不存在
             	user.setUserName("");
