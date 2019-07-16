@@ -71,11 +71,11 @@
 							varStatus="aNewStatus">
 							<li>${aNew.newsTitle }<span>作者：${aNew.newsAuthor }
 									&nbsp;&nbsp;<a
-									href="modifyNewsServlet?newsId=${aNew.newsId }">修改</a>
-									&nbsp;&nbsp;<a href="deleteNewsServlet?newsId=${aNew.newsId }">删除</a>
+									href="ToNewsEditServlet?nid=${aNew.newsId }">修改</a>
+									&nbsp;&nbsp;<a href="DeleteNewsServlet?nid=${aNew.newsId }">删除</a>
 							</span></li>
 							<c:if test="${aNewStatus.count % 5 == 0 }">
-								<li></li>
+								<li><br></li>
 							</c:if>
 						</c:forEach>
 					</c:otherwise>

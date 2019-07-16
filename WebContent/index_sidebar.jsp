@@ -23,7 +23,7 @@
       		</c:when>
       		<c:otherwise>
       			<c:forEach items="${sessionScope.chinaNewsList}" var="aNew">
-            		<li><a href='/readNews&newsId=${aNew.newsId}'><b>${aNew.newsTitle}</b></a></li>
+            		<li><a href='/newsManagement/readNewsServlet?newsTitle=${aNew.newsTitle}'><b>${aNew.newsTitle}</b></a></li>
       			</c:forEach>
       		</c:otherwise>
       	</c:choose>
@@ -42,7 +42,7 @@
       		</c:when>
       		<c:otherwise>
       			<c:forEach items="${sessionScope.intelNewsList}" var="aNew">
-            		<li><a href='/readNews&newsId=${aNew.newsId}'><b>${aNew.newsTitle}</b></a></li>
+            		<li><a href='/newsManagement/readNewsServlet?newsTitle=${aNew.newsTitle}'><b>${aNew.newsTitle}</b></a></li>
       			</c:forEach>
       		</c:otherwise>
       	</c:choose>
@@ -61,7 +61,7 @@
       		</c:when>
       		<c:otherwise>
       			<c:forEach items="${sessionScope.playNewsList}" var="aNew">
-            		<li><a href='/readNews&newsId=${aNew.newsId}'><b>${aNew.newsTitle}</b></a></li>
+            		<li><a href='/newsManagement/readNewsServlet?newsTitle=${aNew.newsTitle}'><b>${aNew.newsTitle}</b></a></li>
       			</c:forEach>
       		</c:otherwise>
       	</c:choose>
