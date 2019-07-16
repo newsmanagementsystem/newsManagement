@@ -11,4 +11,6 @@ public interface newsService {
     public List<News> selectAllNews();
     //根据主题查询新闻
     public List<News> findAllNewsByThemeId(int themeId);
+    //根据标题查找新闻
+    public News findNewsByTitle(String newsTitle);
 }

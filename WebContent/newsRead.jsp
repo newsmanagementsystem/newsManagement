@@ -1,13 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<!-- 引入JSTL标签库 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<%
-	String path = request.getContextPath();
-%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>新闻中国</title>
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/index.css" />
@@ -38,7 +35,8 @@
 				</c:when>
 				<c:otherwise>
 					<p id="welcomeInfo">
-						用户：<b>${sessionScope.login }</b>&nbsp;&nbsp;&nbsp;&nbsp;欢迎登陆！&nbsp;&nbsp;<a href="/newsManagement/logoutServlet">退出</a>
+						用户：<b>${sessionScope.login }</b>&nbsp;&nbsp;&nbsp;&nbsp;欢迎登陆！&nbsp;&nbsp;<a
+							href="/newsManagement/logoutServlet">退出</a>
 					</p>
 				</c:otherwise>
 			</c:choose>
@@ -67,7 +65,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div id="container">
 		<%@ include file="index_sidebar.jsp"%>
 		<div class="main">
@@ -75,58 +72,34 @@
 				<img src="images/class_type.gif" alt="新闻中心" />
 			</div>
 			<div class="content">
-				<ul class="class_date">
-					<!-- 循环输出新闻主题 -->
-					<c:choose>
-						<c:when test="${sessionScope.themeList == null }">
-							<p>当前暂无新闻分类</p>
-						</c:when>
-						<c:when test="${empty sessionScope.themeList }">
-							<p>当前暂无新闻主题</p>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${sessionScope.themeList }" var="aTheme"
-								varStatus="aThemeStatus">
-								<c:if test="${aThemeStatus.count % 10 == 1 }">
-									<li id='class_month'>
-								</c:if>
-								<a href="<%= path %>/newsListServlet?themeID=${aTheme.themeID }"><b>${aTheme.themeName }</b></a>
-								<c:if test="${aThemeStatus.count % 10 == 0 }">
-									</li>
-								</c:if>
-								<c:set var="totalNum" value="${aThemeStatus.count }"></c:set>
-							</c:forEach>
-							<c:if test="${totalNum % 10 != 0 }">
-								</li>
-							</c:if>
-						</c:otherwise>
-					</c:choose>
-				</ul>
 				<ul class="classlist">
-					<!-- 循环输出新闻列表 -->
-					<c:choose>
-						<c:when test="${sessionScope.newsList == null }">
-							<p>当前暂无新闻</p>
-						</c:when>
-						<c:when test="${empty sessionScope.newsList }">
-							<p>当前暂无新闻</p>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${sessionScope.newsList }" var="aNew"
-								varStatus="aNewStatus">
-								<li><a href="<%= path %>/readNewsServlet?newsTitle=${aNew.newsTitle}">${aNew.newsTitle }</a><span>${aNew.newsModifydate }</span></li>
-								<c:if test="${aNewStatus.count % 5 == 0 }">
-									<li class='space'></li>
-								</c:if>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
+					<table width="80%" align="center">
+						<tr width="100%">
+							<td colspan="2" align="center">${news.newsTitle}</td>
+						</tr>
+						<tr>
+							<td colspan="2"><hr /></td>
+						</tr>
+						<tr>
+							<td align="center">作者：${news.newsAuthor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</td>
+							<td align="left">发布时间：<fmt:formatDate
+									value="${news.newsCreatedate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center"></td>
+						</tr>
+						<tr>
+							<td colspan="2">${news.newsContent}</td>
+						</tr>
+						<tr>
+							<td colspan="2"><hr /></td>
+						</tr>
+					</table>
 				</ul>
 			</div>
 			<%@ include file="index_rightbar.jsp"%>
 		</div>
 	</div>
-	<%@ include file="index_bottom.html"%>
-
 </body>
 </html>

@@ -114,4 +114,24 @@
     <servlet-name>mainPageServlet</servlet-name>
     <url-pattern>/mainPageServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>newsListServlet</display-name>
+    <servlet-name>newsListServlet</servlet-name>
+    <servlet-class>com.seven.service.news.newsListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>newsListServlet</servlet-name>
+    <url-pattern>/newsListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>readNewsServlet</display-name>
+    <servlet-name>readNewsServlet</servlet-name>
+    <servlet-class>com.seven.service.news.readNewsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>readNewsServlet</servlet-name>
+    <url-pattern>/readNewsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

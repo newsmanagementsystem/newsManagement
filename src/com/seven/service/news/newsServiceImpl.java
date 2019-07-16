@@ -36,4 +36,13 @@ public class newsServiceImpl implements newsService {
 		return allNews;
 	}
 	
+	@Override
+	public News findNewsByTitle(String newsTitle) {
+		//创建数据访问层对象
+		NewsDao newsDaoObject = new NewsDaoImpl();
+		
+		//执行查询
+		News aNews = newsDaoObject.findNewsByTitle(newsTitle);
+		return aNews;
+	}
 }

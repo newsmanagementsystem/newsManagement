@@ -42,7 +42,7 @@ a:hover{ color:#f00; text-decoration:underline;}
 				#class_month{ font-weight:600;}
 				#class_month a{ margin:0 7px; *margin:0 5px;}
 				#class_day{ line-height:30px;}
-			.classlist{ clear:both; margin-top:10px;}
+			.classlist{ clear:both; margin-top:10px;margin-right:10px;}
 			.classlist li{ position:relative; line-height:22px; background:url(../images/arrow.gif) no-repeat 0 10px; padding:0 130px 0 8px;}
 			.classlist li.space{ background:none; height:22px;}
 			.classlist li span{ position:absolute; top:-1px; *top:-4px; right:16px;}
