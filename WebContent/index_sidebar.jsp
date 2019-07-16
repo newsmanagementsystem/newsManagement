@@ -4,6 +4,9 @@
 <html>
 <head>
 <link href="css/main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	.side_list{overflow:auto ;clear:both}
+</style>
 </head>
 <body>
   <div class="sidebar">
