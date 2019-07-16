@@ -80,7 +80,7 @@
                 console.log("result.msg:"+result.msg)
                 if (result.msg==1){
                     $("#name").html("<font color='red'>用户名可以使用 </font>");
-                    return true;
+
                 } else {
                     $("#name").html("<font color='red'>用户名已存在 </font>");
                     layer.msg('用户名已存在',{
