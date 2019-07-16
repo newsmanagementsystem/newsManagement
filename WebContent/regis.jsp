@@ -12,7 +12,7 @@
     <base href="<%=basePath%>">
     <title>用户注册</title>
 </head>
-<body><form action="<%= path %>/registerService" method="post" id="regis">
+<body><form action=<%=path%>"/registerService" method="post" id="regis">
     <table border="0" cellpadding="0" cellspacing="0" align="center" width="530">
         <tr>
             <td height="108" colspan="2"><img src="images/top.jpg"></td>
@@ -32,7 +32,7 @@
         <tr>
             <td width="107" height="36">性别：</td>
             <td width="524">
-                <input name="sex" type="radio"   value="男" checked>男&nbsp;
+                <input name="sex" type="radio" value="男" checked>男&nbsp;
                 <input name="sex" type="radio" value="女" class="input">女
             </td>
         </tr>
@@ -48,7 +48,7 @@
             </td>
         </tr>
         <tr><td colspan="2" align="center">
-            <a href="index.jsp"><input type="submit" value="同意以下协议条款并提交" id="register"></a>
+            <button id="register" type="submit">同意以下协议条款并提交</button>
         </td></tr>
         <tr><td colspan="2">
   <textarea cols="" rows="" readonly="readonly" style="width:480px;height:110px;font-size:12px;color:#666">
@@ -65,7 +65,8 @@
     </table>
 </form>
 </body>
-<script src="<%=path %>/js/jquery-1.11.3.min.js"></script>
+<script src="<%=path%>/js/jquery-1.11.3.min.js"></script>
+<script src=<%=path%>"/js/layui/layui.all.js"></script>
 <script>
     function aj(){
         var uid = $("#userName").val();
@@ -106,53 +107,46 @@
     function validate() {
         var pwd1 = $("#pwd1").val();
         var pwd2 = $("#pwd2").val();
-        
         <!-- 对比两次输入的密码 -->
-        
         if(pwd1 == pwd2) {
             $("#tishi").html("<font color='green'>两次密码相同</font>");
-            $("#submit").disabled = false;
+            $("#register").disabled = false;
         }
         else {
             $("#tishi").html("<font color='red'>两次密码不相同</font>");
-            $("#submit").disabled = true;
+            $("#register").disabled = true;
         }
     }
-    $(document).ready(function(){
-        //用户名输入框绑定事件
-        $("#register").click(function(){
-            if (check()==-1){
+    $(document).ready(function() {
+        $("#register").click(function () {
+            if (check() == -1) {
                 layer.msg('请输入用户名', {
                     time: 2000, //2s后自动关闭
                 });
                 return false;
-            }
-            if (check()==-2){
+            } else if (check() == -2) {
                 layer.msg('请输入密码', {
                     time: 2000, //2s后自动关闭
                 });
                 return false;
-            }
-            if (check()==-3){
+            } else if (check() == -3) {
                 layer.msg('请重新输入密码', {
                     time: 2000, //2s后自动关闭
                 });
                 return false;
-            }
-            if(check()==-4){
+            } else if (check() == -4) {
                 layer.msg('请输入email', {
                     time: 2000, //2s后自动关闭
                 });
                 return false;
-            }
-            if (check()==-5){
+            } else if (check() == -5) {
                 layer.msg('请输入出生日期', {
                     time: 2000, //2s后自动关闭
                 });
                 return false;
-            }
-            else
+            } else {
                 return true;
+            }
         });
     });
     function check() {
