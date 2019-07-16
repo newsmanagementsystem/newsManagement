@@ -12,8 +12,7 @@
     <base href="<%=basePath%>">
     <title>用户注册</title>
 </head>
-<body>
-<form action="<%= path %>/registerService" method="post">
+<body><form action="<%= path %>/registerService" method="post" id="regis">
     <table border="0" cellpadding="0" cellspacing="0" align="center" width="530">
         <tr>
             <td height="108" colspan="2"><img src="images/top.jpg"></td>
@@ -39,17 +38,17 @@
         </tr>
         <tr>
             <td width="117" height="36" >电子邮件地址：</td>
-            <td width="524"><input name="email" type="email" placeholder="Email">
+            <td width="524"><input name="email" type="email" placeholder="Email" id="email">
                 输入正确的Email地址</td>
         </tr>
         <tr>
             <td width="107" height="36">出生日期：</td>
             <td width="524">
-                <input name="date" type="date">
+                <input name="date" type="date" id="date">
             </td>
         </tr>
         <tr><td colspan="2" align="center">
-            <a href="index.jsp"><input type="submit" value="同意以下协议条款并提交"></a>
+            <a href="index.jsp"><input type="submit" value="同意以下协议条款并提交" id="register"></a>
         </td></tr>
         <tr><td colspan="2">
   <textarea cols="" rows="" readonly="readonly" style="width:480px;height:110px;font-size:12px;color:#666">
@@ -119,6 +118,71 @@
             $("#submit").disabled = true;
         }
     }
+    $(document).ready(function(){
+        //用户名输入框绑定事件
+        $("#register").click(function(){
+            if (check()==-1){
+                layer.msg('请输入用户名', {
+                    time: 2000, //2s后自动关闭
+                });
+                return false;
+            }
+            if (check()==-2){
+                layer.msg('请输入密码', {
+                    time: 2000, //2s后自动关闭
+                });
+                return false;
+            }
+            if (check()==-3){
+                layer.msg('请重新输入密码', {
+                    time: 2000, //2s后自动关闭
+                });
+                return false;
+            }
+            if(check()==-4){
+                layer.msg('请输入email', {
+                    time: 2000, //2s后自动关闭
+                });
+                return false;
+            }
+            if (check()==-5){
+                layer.msg('请输入出生日期', {
+                    time: 2000, //2s后自动关闭
+                });
+                return false;
+            }
+            else
+                return true;
+        });
+    });
+    function check() {
+        var userName = $("#userName").val();
+        var pwd1 = $("#pwd1").val();
+        var pwd2 = $("#pwd2").val();
+        var email = $("#email").val();
+        var date = $("#date").val();
+        if (userName == "" || userName == null) {
+            regis.userName.focus();
+            return -1;
+        }
+        if (pwd1 == "" || pwd2 == null) {
+            regis.pwd1.focus();
+            return -2;
+        }
+        if (pwd2 == "" || pwd2 == null) {
+            regis.pwd2.focus();
+            return -3;
+        }
+        if (email == "" || email == null) {
+            regis.email.focus();
+            return -4;
+        }
+        if (date == "" || date == null) {
+            regis.date.focus();
+            return -5;
+        }
+    }
+
 
 </script>
 </html>
