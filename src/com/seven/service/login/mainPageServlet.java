@@ -47,7 +47,8 @@ public class mainPageServlet extends HttpServlet {
 		request.setAttribute("newsList", newsList);
 		
 		//返回页面
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+//		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 	}
 
 	/**

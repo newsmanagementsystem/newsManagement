@@ -35,7 +35,9 @@ public class registerService extends HttpServlet {
             Gson gson = new Gson();
             if(userNameIsExit!=true){
                 userService.addUser(user);
-                req.getRequestDispatcher("index.jsp").forward(req,resp);
+                req.getSession().setAttribute("login",user.getUserName());
+//                req.getRequestDispatcher("index.jsp").forward(req,resp);
+                resp.sendRedirect(req.getContextPath()+"/index.jsp");
             }else{
                 resp.sendRedirect("regis.jsp");
             }

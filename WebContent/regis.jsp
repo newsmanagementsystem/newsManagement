@@ -66,15 +66,14 @@
     </table>
 </form>
 </body>
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="js/layui/layui.all.js"></script>
+<script src="<%=path %>/js/jquery-1.11.3.min.js"></script>
 <script>
     function aj(){
         var uid = $("#userName").val();
         $.ajax({
             async : true,    //表示请求是否异步处理
             type : "post",    //请求类型
-            url : "/checkService",//请求的 URL地址
+            url : "checkService",//请求的 URL地址
             dataType : "json",//返回的数据类型
             data:{"userName":uid},
             success:function (result) {
@@ -108,7 +107,9 @@
     function validate() {
         var pwd1 = $("#pwd1").val();
         var pwd2 = $("#pwd2").val();
+        
         <!-- 对比两次输入的密码 -->
+        
         if(pwd1 == pwd2) {
             $("#tishi").html("<font color='green'>两次密码相同</font>");
             $("#submit").disabled = false;
