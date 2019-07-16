@@ -48,7 +48,7 @@
             </td>
         </tr>
         <tr><td colspan="2" align="center">
-            <button id="register" type="submit">同意以下协议条款并提交</button>
+            <button id="register" type="submit" onclick="aj()">同意以下协议条款并提交</button>
         </td></tr>
         <tr><td colspan="2">
   <textarea cols="" rows="" readonly="readonly" style="width:480px;height:110px;font-size:12px;color:#666">
@@ -80,14 +80,24 @@
                 console.log("result.msg:"+result.msg)
                 if (result.msg==1){
                     $("#name").html("<font color='red'>用户名可以使用 </font>");
+                    return true;
                 } else {
                     $("#name").html("<font color='red'>用户名已存在 </font>");
+                    layer.msg('用户名已存在',{
+                        time:2000,
+                    })
+                    return false;
                 }
                 var regex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{4,16}$";
                 if(uid.match(regex)==null){
                     $("#uname").html("<font color='red'>用户名不符合规范</font>");
+                    layer.msg('请输入正确格式的用户名',{
+                        time:2000,
+                    })
+                    return false;
                 }else {
                     $("#uname").html("<font color='green'>用户名符合规范</font>");
+                    return true;
                 }
             },
             error:function (error) {
@@ -100,8 +110,13 @@
         var pwd2 = $("#pwd2").val();
         if(pwd1.length<6||pwd1.length>12){
             $("#pwd").html("<font color='green'>密码长度小于6或大于12</font>");
+            layer.msg('请输入正确长度的密码',{
+                time:2000,
+            })
+            return false;
         }else {
             $("#pwd").html("<font color='green'>密码长度符合规范</font>");
+            return true;
         }
     }
     function validate() {
@@ -110,11 +125,11 @@
         <!-- 对比两次输入的密码 -->
         if(pwd1 == pwd2) {
             $("#tishi").html("<font color='green'>两次密码相同</font>");
-            $("#register").disabled = false;
+            return true;
         }
         else {
             $("#tishi").html("<font color='red'>两次密码不相同</font>");
-            $("#register").disabled = true;
+            return false;
         }
     }
     $(document).ready(function() {
@@ -144,7 +159,23 @@
                     time: 2000, //2s后自动关闭
                 });
                 return false;
-            } else {
+            }else if (check()==-6){
+                layer.msg('请输入正确的用户名', {
+                    time: 2000, //2s后自动关闭
+                });
+                return false;
+            } else if (check()==-7){
+                layer.msg('请输入正确格式的密码', {
+                    time: 2000, //2s后自动关闭
+                });
+                return false;
+            } else if (check()==-8){
+                layer.msg('请输入相同的密码', {
+                    time: 2000, //2s后自动关闭
+                });
+                return false;
+            }
+            else {
                 return true;
             }
         });
@@ -174,6 +205,18 @@
         if (date == "" || date == null) {
             regis.date.focus();
             return -5;
+        }
+        if (aj()==false){
+            regis.userName.focus();
+            return -6;
+        }
+        if (pwdlength()==false){
+            regis.pwd1.focus();
+            return -7;
+        }
+        if (validate()==false){
+            regis.pwd2.focus();
+            return -8;
         }
     }
 
