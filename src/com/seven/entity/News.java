@@ -1,6 +1,6 @@
 package com.seven.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 /*
  * 新闻实体类

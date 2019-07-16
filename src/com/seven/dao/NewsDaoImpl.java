@@ -31,8 +31,8 @@ public class NewsDaoImpl implements NewsDao {
             pmt.setInt(1, news.getThemeId());
             pmt.setString(2, news.getNewsTitle());
             pmt.setString(3, news.getNewsAuthor());
-            pmt.setDate(4, news.getNewsCreatedate());
-            pmt.setDate(5, news.getNewsModifydate());
+            pmt.setTimestamp(4, new java.sql.Timestamp(news.getNewsCreatedate().getTime()));
+            pmt.setTimestamp(5, new java.sql.Timestamp(news.getNewsModifydate().getTime()));
             pmt.setString(6, news.getNewsSummary());
             pmt.setString(7, news.getNewsContent());
             pmt.setString(8, news.getNewsPicpath());
@@ -101,8 +101,8 @@ public class NewsDaoImpl implements NewsDao {
                 news.setThemeId(rs.getInt("themeId"));
                 news.setNewsAuthor(rs.getString("newsAuthor"));
                 news.setNewsTitle(rs.getString("newsTitle"));
-                news.setNewsCreatedate(rs.getDate("newsCreatedate"));
-                news.setNewsModifydate(rs.getDate("newsModifydate"));
+                news.setNewsCreatedate(rs.getTimestamp("newsCreatedate"));
+                news.setNewsModifydate(rs.getTimestamp("newsModifydate"));
                 news.setNewsContent(rs.getString("newsContent"));
                 news.setNewsSummary(rs.getString("newsSummary"));
                 news.setNewsPicpath(rs.getString("newsPicpath"));
@@ -138,8 +138,8 @@ public class NewsDaoImpl implements NewsDao {
                 news.setThemeId(rs.getInt("themeId"));
                 news.setNewsAuthor(rs.getString("newsAuthor"));
                 news.setNewsTitle(rs.getString("newsTitle"));
-                news.setNewsCreatedate(rs.getDate("newsCreatedate"));
-                news.setNewsModifydate(rs.getDate("newsModifydate"));
+                news.setNewsCreatedate(rs.getTimestamp("newsCreatedate"));
+                news.setNewsModifydate(rs.getTimestamp("newsModifydate"));
                 news.setNewsContent(rs.getString("newsContent"));
                 news.setNewsSummary(rs.getString("newsSummary"));
                 news.setNewsPicpath(rs.getString("newsPicpath"));
@@ -168,7 +168,7 @@ public class NewsDaoImpl implements NewsDao {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setInt(1, news.getThemeId());
             ptmt.setString(2, news.getNewsTitle());
-            ptmt.setDate(3, news.getNewsModifydate());
+            ptmt.setTimestamp(3, new java.sql.Timestamp(news.getNewsModifydate().getTime()));
             ptmt.setString(4, news.getNewsSummary());
             ptmt.setString(5, news.getNewsContent());
             ptmt.setString(6, news.getNewsPicpath());
@@ -199,8 +199,8 @@ public class NewsDaoImpl implements NewsDao {
 	                news.setThemeId(rs.getInt("themeId"));
 	                news.setNewsAuthor(rs.getString("newsAuthor"));
 	                news.setNewsTitle(rs.getString("newsTitle"));
-	                news.setNewsCreatedate(rs.getDate("newsCreatedate"));
-	                news.setNewsModifydate(rs.getDate("newsModifydate"));
+	                news.setNewsCreatedate(rs.getTimestamp("newsCreatedate"));
+	                news.setNewsModifydate(rs.getTimestamp("newsModifydate"));
 	                news.setNewsContent(rs.getString("newsContent"));
 	                news.setNewsSummary(rs.getString("newsSummary"));
 	                news.setNewsPicpath(rs.getString("newsPicpath"));
