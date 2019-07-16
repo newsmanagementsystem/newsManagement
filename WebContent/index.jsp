@@ -78,14 +78,14 @@
 				<ul class="class_date">
 					<!-- 循环输出新闻主题 -->
 					<c:choose>
-						<c:when test="${requestScope.themeList == null }">
+						<c:when test="${sessionScope.themeList == null }">
 							<p>当前暂无新闻分类</p>
 						</c:when>
-						<c:when test="${empty requestScope.themeList }">
+						<c:when test="${empty sessionScope.themeList }">
 							<p>当前暂无新闻主题</p>
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${requestScope.themeList }" var="aTheme"
+							<c:forEach items="${sessionScope.themeList }" var="aTheme"
 								varStatus="aThemeStatus">
 								<c:if test="${aThemeStatus.count % 10 == 1 }">
 									<li id='class_month'>
@@ -105,14 +105,14 @@
 				<ul class="classlist">
 					<!-- 循环输出新闻列表 -->
 					<c:choose>
-						<c:when test="${requestScope.newsList == null }">
+						<c:when test="${sessionScope.newsList == null }">
 							<p>当前暂无新闻</p>
 						</c:when>
-						<c:when test="${empty requestScope.newsList }">
+						<c:when test="${empty sessionScope.newsList }">
 							<p>当前暂无新闻</p>
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${requestScope.newsList }" var="aNew"
+							<c:forEach items="${sessionScope.newsList }" var="aNew"
 								varStatus="aNewStatus">
 								<li><a href="/readNews?newsId=${aNew.newsId }">${aNew.newsTitle }</a><span>${aNew.newsModifydate }</span></li>
 								<c:if test="${aNewStatus.count % 5 == 0 }">

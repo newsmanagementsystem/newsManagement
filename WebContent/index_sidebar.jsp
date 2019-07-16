@@ -12,14 +12,14 @@
       <ul>
       	<!-- 循环输出新闻列表 -->
       	<c:choose>
-      		<c:when test="${requestScope.chinaNewsList == null}">
+      		<c:when test="${sessionScope.chinaNewsList == null}">
       			<p>当前暂无新闻</p>
       		</c:when>
-      		<c:when test="${empty requestScope.chinaNewsList}">
+      		<c:when test="${empty sessionScope.chinaNewsList}">
       			<p>当前暂无新闻</p>
       		</c:when>
       		<c:otherwise>
-      			<c:forEach items="${requestScope.chinaNewsList}" var="aNew">
+      			<c:forEach items="${sessionScope.chinaNewsList}" var="aNew">
             		<li><a href='/readNews&newsId=${aNew.newsId}'><b>${aNew.newsTitle}</b></a></li>
       			</c:forEach>
       		</c:otherwise>
@@ -31,14 +31,14 @@
       <ul>
       <!-- 循环输出新闻列表 -->
       	<c:choose>
-      		<c:when test="${requestScope.intelNewsList == null}">
+      		<c:when test="${sessionScope.intelNewsList == null}">
       			<p>当前暂无新闻</p>
       		</c:when>
-      		<c:when test="${empty requestScope.intelNewsList}">
+      		<c:when test="${empty sessionScope.intelNewsList}">
       			<p>当前暂无新闻</p>
       		</c:when>
       		<c:otherwise>
-      			<c:forEach items="${requestScope.intelNewsList}" var="aNew">
+      			<c:forEach items="${sessionScope.intelNewsList}" var="aNew">
             		<li><a href='/readNews&newsId=${aNew.newsId}'><b>${aNew.newsTitle}</b></a></li>
       			</c:forEach>
       		</c:otherwise>
@@ -50,14 +50,14 @@
       <ul>
       <!-- 循环输出新闻列表 -->
       	<c:choose>
-      		<c:when test="${requestScope.playNewsList == null}">
+      		<c:when test="${sessionScope.playNewsList == null}">
       			<p>当前暂无新闻</p>
       		</c:when>
-      		<c:when test="${empty requestScope.playNewsList}">
+      		<c:when test="${empty sessionScope.playNewsList}">
       			<p>当前暂无新闻</p>
       		</c:when>
       		<c:otherwise>
-      			<c:forEach items="${requestScope.playNewsList}" var="aNew">
+      			<c:forEach items="${sessionScope.playNewsList}" var="aNew">
             		<li><a href='/readNews&newsId=${aNew.newsId}'><b>${aNew.newsTitle}</b></a></li>
       			</c:forEach>
       		</c:otherwise>

@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.seven.entity.News;
 import com.seven.entity.Theme;
@@ -36,11 +37,14 @@ public class mainPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("mainpage");
+		//获取Session
+		HttpSession session = request.getSession();
+		
 		// 查询主题信息
 		themeService themeServiceObject = new themeServiceImpl();
 
 		List<Theme> themeList = themeServiceObject.findAllThemes();
-		request.setAttribute("themeList", themeList);
+		session.setAttribute("themeList", themeList);
 
 		// 查询新闻信息
 		newsService newsServiceObject = new newsServiceImpl();
@@ -49,15 +53,15 @@ public class mainPageServlet extends HttpServlet {
 //		for (News news : newsList) {
 //			System.out.println("newsTitle" + news.getNewsTitle());
 //		}
-		request.setAttribute("newsList", newsList);
+		session.setAttribute("newsList", newsList);
 
 		// 查询主题信息
 		List<News> chinaNewsList = newsServiceObject.findAllNewsByThemeId(1);
-		request.setAttribute("chinaNewsList", chinaNewsList);
+		session.setAttribute("chinaNewsList", chinaNewsList);
 		List<News> intelNewsList = newsServiceObject.findAllNewsByThemeId(2);
-		request.setAttribute("intelNewsList", intelNewsList);
+		session.setAttribute("intelNewsList", intelNewsList);
 		List<News> playNewsList = newsServiceObject.findAllNewsByThemeId(5);
-		request.setAttribute("playNewsList", playNewsList);
+		session.setAttribute("playNewsList", playNewsList);
 		
 		// 返回页面
 		request.getRequestDispatcher("/index.jsp").forward(request, response);

@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!-- 引入JSTL标签库 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -51,88 +53,33 @@
 			<div id="channel"></div>
 		</div>
 		<div id="opt_list">
-			<iframe src="<%=path%>/admin/console_element/left.jsp"
-				scrolling="no" frameborder="0" width="160px" height="300px"></iframe>
+			<iframe src="<%=path%>/admin/console_element/left.jsp" scrolling="no"
+				frameborder="0" width="160px" height="300px"></iframe>
 		</div>
 		<div id="opt_area">
 			<ul class="classlist">
-				<li>深足教练组：说我们买球是侮辱 朱广沪常暗中支招 <span> 作者： sport
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>省政府500万悬赏建业登顶 球员:遗憾主场放跑国安 <span> 作者： sport
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>洪元硕：北京人的脸就看你们了 最后一哆嗦看着办 <span> 作者： sport
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>临界冠军京城夺票总动员 球迷:夺冠!让所有人闭嘴 <span> 作者： sport
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>一纸传真暗含申花处理态度 国足征调杜威突生悬疑 <span> 作者： sport
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li class='space'></li>
-				<li>气候变化导致海平面上升 <span> 作者：news &#160;&#160;&#160;&#160;
-						<a href='admin/news_modify.jsp'>修改</a> &#160;&#160;&#160;&#160; <a
-						href='#'>删除</a>
-				</span>
-				</li>
-				<li>商贸联委会在杭州开会 中美对贸易争端态度低调 <span> 作者：news
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>迟福林：“十二五”改革应向消费大国转型 <span> 作者： news
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>伊朗称放弃美元作为外储地位 人民币或上位 <span> 作者： out
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>“持械抢劫，当场击毙” 浙江永康现超雷人标语 <span> 作者： news
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li class='space'></li>
-				<li>国内成品油价格上调几成定局 <span> 作者： news
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>俄数百所幼儿园和学校因流感停课 <span> 作者： news
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>喀布尔市中心传出爆炸和枪声 目前原因不明 <span> 作者： out
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>国台办介绍大陆高校加大对台招生力度情况 <span> 作者： news
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
-				<li>国台办将授权福建等六省市部分赴台管理审批权 <span> 作者： news
-						&#160;&#160;&#160;&#160; <a href='admin/news_modify.jsp'>修改</a>
-						&#160;&#160;&#160;&#160; <a href='#'>删除</a>
-				</span>
-				</li>
+				<!-- 循环输出新闻列表 -->
+				<c:choose>
+					<c:when test="${sessionScope.newsList == null }">
+						<p>当前暂无新闻</p>
+					</c:when>
+					<c:when test="${empty sessionScope.newsList  }">
+						<p>当前暂无新闻</p>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${sessionScope.newsList }" var="aNew"
+							varStatus="aNewStatus">
+							<li>${aNew.newsTitle }<span>作者：${aNew.newsAuthor }
+									&nbsp;&nbsp;<a
+									href="modifyNewsServlet?newsId=${aNew.newsId }">修改</a>
+									&nbsp;&nbsp;<a href="deleteNewsServlet?newsId=${aNew.newsId }">删除</a>
+							</span></li>
+							<c:if test="${aNewStatus.count % 5 == 0 }">
+								<li></li>
+							</c:if>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 				<li class='space'></li>
 				<p align="right">
 					当前页数:[1/3]&nbsp; <a href="#">下一页</a> <a href="#">末页</a>
