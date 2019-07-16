@@ -46,9 +46,9 @@ public class mainPageServlet extends HttpServlet {
 		newsService newsServiceObject = new newsServiceImpl();
 
 		List<News> newsList = newsServiceObject.selectAllNews();
-		for (News news : newsList) {
-			System.out.println("newsTitle" + news.getNewsTitle());
-		}
+//		for (News news : newsList) {
+//			System.out.println("newsTitle" + news.getNewsTitle());
+//		}
 		request.setAttribute("newsList", newsList);
 
 		// 查询主题信息

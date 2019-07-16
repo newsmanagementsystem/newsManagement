@@ -39,6 +39,7 @@ public class NewsDaoImpl implements NewsDao {
             //ִ执行SQL语句
             pmt.execute();
             flag=1;
+            connection.close();
         } catch (SQLException e) {
 
         }
@@ -69,7 +70,7 @@ public class NewsDaoImpl implements NewsDao {
             while (resultSet.next()) {
                 count++;
             }
-
+            connection.close();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -108,6 +109,7 @@ public class NewsDaoImpl implements NewsDao {
                 news.setNewsPicpath(rs.getString("newsPicpath"));
                 list.add(news);
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
             //throw e;
@@ -145,6 +147,7 @@ public class NewsDaoImpl implements NewsDao {
                 news.setNewsPicpath(rs.getString("newsPicpath"));
                 list.add(news);
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
             //throw e;
@@ -174,6 +177,7 @@ public class NewsDaoImpl implements NewsDao {
             ptmt.setString(6, news.getNewsPicpath());
             ptmt.setInt(7, news.getNewsId());
             result = ptmt.executeUpdate();
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -205,6 +209,7 @@ public class NewsDaoImpl implements NewsDao {
 	                news.setNewsSummary(rs.getString("newsSummary"));
 	                news.setNewsPicpath(rs.getString("newsPicpath"));
 	            }
+	            conn.close();
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        } finally {
@@ -225,7 +230,7 @@ public class NewsDaoImpl implements NewsDao {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setInt(1, nid);
             result = ptmt.executeUpdate();
-
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
