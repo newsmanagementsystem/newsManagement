@@ -27,6 +27,10 @@
 	</div>
 </div>
 </div>
+<div id="admin_bar">
+  <div id="status"></div>
+  <div id="channel"> </div>
+</div>
 
 </body>
 </html>
