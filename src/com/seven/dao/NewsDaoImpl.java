@@ -263,4 +263,106 @@ public class NewsDaoImpl implements NewsDao {
         return count;
     }
 
+	//根据新闻id查找新闻
+    @Override
+    public News findNewsById(int nid){
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement pmt = null;
+        News news = new News();
+        try {
+            String sql = "SELECT * FROM newstable WHERE newsId = ?";
+            //获取连接
+            conn = DatabaseUtil.getConnection();
+            pmt = conn.prepareStatement(sql);
+            pmt.setInt(1, nid);
+            rs = pmt.executeQuery();
+            //统计新闻数量
+            if(rs == null){
+                System.out.println("1111weikong===="+nid);
+            }
+            rs.next();
+            if(rs == null){
+                System.out.println("2222weikong");
+            }
+           news.setNewsId(rs.getInt("newsId"));
+           news.setThemeId(rs.getInt("themeId"));
+           news.setNewsTitle(rs.getString("newsTitle"));
+           news.setNewsAuthor(rs.getString("newsAuthor"));
+           news.setNewsPicpath(rs.getString("newsPicpath"));
+           news.setNewsSummary(rs.getString("newsSummary"));
+           news.setNewsContent(rs.getString("newsContent"));
+           /*news.setNewsCreatedate(rs.getString("newsCreatrdate"));
+           news.setNewsModifydate(rs.getString("newsModifydate"));*/
+           conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+//            DatabaseUtil.release(conn,pmt,rs);
+        }
+        return news;
+    }
+  //查找新闻的总数
+    @Override
+    public int getNewsCount(){
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement pmt = null;
+        News news = new News();
+        int count = 0;
+        try {
+            String sql = "SELECT count(*) FROM newstable";
+            //获取连接
+            conn = DatabaseUtil.getConnection();
+            pmt = conn.prepareStatement(sql);
+            rs = pmt.executeQuery();
+            rs.next();
+            count = rs.getInt(1);
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+//            DatabaseUtil.release(conn,pmt,rs);
+        }
+
+	    return count;
+    }
+
+
+    //分页查找新闻数据
+    public ArrayList<News> getNewsListSplit(int startRow,int pageSize){
+
+        Connection conn = null;
+        ArrayList<News> list = new ArrayList<News>();
+        PreparedStatement ptmt = null;
+        ResultSet rs = null;
+        String sql = "select * from newstable LIMIT ?,?";
+        try {
+            conn = DatabaseUtil.getConnection();
+            ptmt = conn.prepareStatement(sql);
+            ptmt.setInt(1,startRow);
+            ptmt.setInt(2,pageSize);
+            rs = ptmt.executeQuery();
+
+            while (rs.next()) {
+                News news = new News();
+                news.setNewsId(rs.getInt("newsId"));
+                news.setThemeId(rs.getInt("themeId"));
+                news.setNewsAuthor(rs.getString("newsAuthor"));
+                news.setNewsTitle(rs.getString("newsTitle"));
+                news.setNewsCreatedate(rs.getTimestamp("newsCreatedate"));
+                news.setNewsModifydate(rs.getTimestamp("newsModifydate"));
+                news.setNewsContent(rs.getString("newsContent"));
+                news.setNewsSummary(rs.getString("newsSummary"));
+                news.setNewsPicpath(rs.getString("newsPicpath"));
+                list.add(news);
+                conn.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+//            DatabaseUtil.release(conn,ptmt,rs);
+        }
+        return list;
+    }
 }
