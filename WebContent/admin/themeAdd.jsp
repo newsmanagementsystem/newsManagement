@@ -71,7 +71,7 @@ $(document).ready(function(){
 			<%@ include file="console_element/top.jsp"%>
 		</div>
 		<div id="opt_list">
-			<iframe src="console_element/left.html" scrolling="no"
+			<iframe src="console_element/left.jsp" scrolling="no"
 				frameborder="0" width="160px" height="300px"></iframe>
 		</div>
 		<div id="opt_area">
