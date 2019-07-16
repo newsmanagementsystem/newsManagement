@@ -43,7 +43,7 @@ public class logoutServlet extends HttpServlet {
 		
 		//给出退出提示
 		
-		response.sendRedirect(request.getContextPath()+"/index.jsp");
+		response.sendRedirect(request.getContextPath()+"/mainPageServlet");
 //		request.getRequestDispatcher("/index.jsp").forward(request, response);
 
         //清空缓冲区并退出

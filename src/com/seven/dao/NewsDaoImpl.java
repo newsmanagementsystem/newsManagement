@@ -93,7 +93,7 @@ public class NewsDaoImpl implements NewsDao {
         try {
             conn = DatabaseUtil.getConnection();
             PreparedStatement ptmt = conn.prepareStatement(sql);
-            rs = ptmt.executeQuery(sql);
+            rs = ptmt.executeQuery();
             News news = null;
             while (rs.next()) {
                 news = new News();
@@ -130,7 +130,7 @@ public class NewsDaoImpl implements NewsDao {
             conn = DatabaseUtil.getConnection();
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setInt(1, themeId);
-            rs = ptmt.executeQuery(sql);
+            rs = ptmt.executeQuery();
             News news = null;
             while (rs.next()) {
                 news = new News();

@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var themeID=themeID;
         $.ajax({
             type : "post",    //请求类型
-            url : "/getNewsCount",//请求的 URL地址
+            url : "<%=path%>/getNewsCount",//请求的 URL地址
             dataType : "json",//返回的数据类型
             data:{"themeID":themeID},
             success:function (result) {
@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     $.ajax({
                         async : true,
                         type: "post",
-                        url: "/deleteThemeServlet",
+                        url: "<%=path%>/deleteThemeServlet",
                         data: {
                             "tid": themeID
                         }});
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         $.ajax({
                             async : true,
                             type: "post",
-                            url: "/deleteThemeServlet",
+                            url: "<%=path%>/deleteThemeServlet",
                             data: {
                                 "tid": themeID
                             }});
