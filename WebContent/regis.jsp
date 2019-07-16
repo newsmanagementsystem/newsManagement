@@ -12,7 +12,7 @@
     <base href="<%=basePath%>">
     <title>用户注册</title>
 </head>
-<body><form action=<%=path%>"/registerService" method="post" id="regis">
+<body><form action="<%=path%>/registerService" method="post" id="regis">
     <table border="0" cellpadding="0" cellspacing="0" align="center" width="530">
         <tr>
             <td height="108" colspan="2"><img src="images/top.jpg"></td>
@@ -66,7 +66,7 @@
 </form>
 </body>
 <script src="<%=path%>/js/jquery-1.11.3.min.js"></script>
-<script src=<%=path%>"/js/layui/layui.all.js"></script>
+<script src="<%=path%>/js/layui/layui.all.js"></script>
 <script>
     function aj(){
         var uid = $("#userName").val();
