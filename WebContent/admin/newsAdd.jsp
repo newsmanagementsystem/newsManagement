@@ -20,7 +20,7 @@
   <div id="channel"> </div>
 </div>
 <div id="main">
-  <iframe src="<%=path %>/admin/console_element/left.html" scrolling="no" frameborder="0" width="160px" height="300px"></iframe>
+  <iframe src="<%=path %>/admin/console_element/left.jsp" scrolling="no" frameborder="0" width="160px" height="300px"></iframe>
   <div id="opt_area">
     <h1 id="opt_type"> 添加新闻： </h1>
     <form action="../util/news?opr=addNews" method="post" enctype="multipart/form-data">
