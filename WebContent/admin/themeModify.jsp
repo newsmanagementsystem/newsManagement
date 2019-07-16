@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<!-- 插入左边栏 -->
 		<div id="opt_list">
-			<iframe src="console_element/left.html" scrolling="no"
+			<iframe src="console_element/left.jsp" scrolling="no"
 				frameborder="0" width="160px" height="300px"></iframe>
 		</div>
 		<!-- 插入中间部分 -->
